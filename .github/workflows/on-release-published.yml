@@ -10,19 +10,16 @@ jobs:
 
     steps:
       - name: Init the github-actions repo
-        uses: SerhatG/github-actions/init@improvements
+        uses: SerhatG/github-actions/init@release_dispatch
 
       - uses: ./aerius-github-actions/events/release-event-action
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
           NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
-#          ROOT_POM_DIRECTORY: repo/source
 
       - uses: ./aerius-github-actions/extras/docker-publish-action
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DOCKER_REGISTRY_USERNAME: ${{ secrets.NEXUS_USERNAME }}
           DOCKER_REGISTRY_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
           DOCKER_IMAGE_NAME: ${{ github.event.repository.name }}
