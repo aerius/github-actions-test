@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       RELEASE_VERSION:
-        description: 'Release version (e.g. 6.0.1-7)'
+        description: 'Release version (e.g. 1.0.0)'
         required: true
       NEXT_DEV_VERSION:
-        description: 'Next development version (e.g. 6.0.1-8-SNAPSHOT)'
+        description: 'Next development version (e.g. 1.0.1-SNAPSHOT)'
         required: true
 
 jobs:

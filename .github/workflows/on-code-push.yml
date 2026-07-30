@@ -1,8 +1,10 @@
-name: release-published-event
+name: code-push
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - 'main'
+      - '**_fixes'
 
 jobs:
   job:
@@ -12,13 +14,13 @@ jobs:
       - name: Init the github-actions repo
         uses: SerhatG/github-actions/init@release_dispatch
 
-      - uses: ./aerius-github-actions/events/release-event-action
+      - uses: ./aerius-github-actions/events/push-event-action
         with:
 #          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
           NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
 
-      - uses: ./aerius-github-actions/extras/docker-publish-action
+      - uses: ./aerius-github-actions/extras/docker-build-or-publish-based-on-maven-project-version-action
         with:
           DOCKER_REGISTRY_USERNAME: ${{ secrets.NEXUS_USERNAME }}
           DOCKER_REGISTRY_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
