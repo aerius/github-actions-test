@@ -21,7 +21,7 @@
 
   <groupId>nl.aerius</groupId>
   <artifactId>github-actions-test</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3-SNAPSHOT</version>
 
   <name>github-actions-test</name>
 
